@@ -165,16 +165,16 @@ int main(){
     for(int i = 0; i < TAM; i++){ // Bloco responsável pela inserção da habilidade cone na matriz tabuleiro.
         for(int j = 0; j < TAM; j++){
             if(posCone[0] == i && posCone[1] == j){ // Localiza a posição inicial de cone.
-                if(posCone[0] > 7 || posCone[1] > 7 || posCone[1] < 2){ // Verifica se é uma posição inválida.
+                if(posCone[0] > MAX || posCone[1] > MAX || posCone[1] < MIN){ // Verifica se é uma posição inválida.
                     flag = 9;
                     break;
                 }
                 for(int x = 0, a = i; x < 3; x++, a++){ // Preenche a matriz tabuleiro com a área de efeito da habilidade cone.
                     for(int y = 0, b = j; y < 5; y++, b++){
-                        if(cone[x][y] == 0){
+                        if(cone[x][y] == 0 || tabuleiro[a][b - 2] == 3){
                             continue;
                         }
-                        tabuleiro[a][b - 2] = cone[x][y];
+                        tabuleiro[a][b - 2] = 5;
                     }
                 }
             }
@@ -184,16 +184,16 @@ int main(){
     for(int i = 0; i < TAM; i++){ // Bloco responsável pela inserção da habilidade cruz na matriz tabuleiro.
         for(int j = 0; j < TAM; j++){
             if(posCruz[0] == i && posCruz[1] == j){ // Localiza a posição inicial de cruz.
-                if(posCruz[0] > 7 || posCruz[0] < 2 || posCruz[1] > 7 || posCruz[1] < 2){ // Verifica se é uma posição inválida.
+                if(posCruz[0] > MAX || posCruz[0] < MIN || posCruz[1] > MAX || posCruz[1] < MIN){ // Verifica se é uma posição inválida.
                     flag = 10;
                     break;
                 }
                 for(int x = 0, a = i; x < 5; x++, a++){ // Preenche a matriz tabuleiro com a área de efeito da habilidade cruz.
                     for(int y = 0, b = j; y < 5; y++, b++){
-                        if(cruz[x][y] == 0){
+                        if(cruz[x][y] == 0 || tabuleiro[a - 2][b - 2] == 3){
                             continue;
                         }
-                        tabuleiro[a - 2][b - 2] = cruz[x][y];
+                        tabuleiro[a - 2][b - 2] = 6;
                     }
                 }
             }
@@ -203,16 +203,16 @@ int main(){
     for(int i = 0; i < TAM; i++){ // Bloco responsável pela inserção da habilidade octaedro na matriz tabuleiro.
         for(int j = 0; j < TAM; j++){
             if(posOcta[0] == i && posOcta[1] == j){ // Localiza a posição inicial de octaedro.
-                if(posOcta[0] > 7 || posOcta[0] < 2 || posOcta[1] > 7 || posOcta[1] < 2){ // Verifica se é uma posição inválida.
+                if(posOcta[0] > MAX || posOcta[0] < MIN || posOcta[1] > MAX || posOcta[1] < MIN){ // Verifica se é uma posição inválida.
                     flag = 11;
                     break;
                 }
                 for(int x = 0, a = i; x < 5; x++, a++){ // Preenche a matriz tabuleiro com a área de efeito da habilidade octaedro.
                     for(int y = 0, b = j; y < 5; y++, b++){
-                        if(octaedro[x][y] == 0){
+                        if(octaedro[x][y] == 0 || tabuleiro[a - 2][b - 2] == 3){
                             continue;
                         }
-                        tabuleiro[a - 2][b - 2] = octaedro[x][y];
+                        tabuleiro[a - 2][b - 2] = 7;
                     }
                 }
             }
